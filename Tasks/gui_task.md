@@ -296,7 +296,9 @@ Screen:
 <sub> Fig.5 Shows the program
     
 <img width="806" alt="Screen Shot 2566-01-31 at 12 50 51" src="https://user-images.githubusercontent.com/111941936/215658588-3bf9e4d0-cc70-4aed-b00a-f2b8d25dfc9f.png">
+    
 <sub> Fig.6 Shows the input converted to USD
     
 <img width="806" alt="Screen Shot 2566-01-31 at 12 51 30" src="https://user-images.githubusercontent.com/111941936/215658663-dba01607-47bf-4905-ba44-3c52414e3da7.png">
+    
 <sub> Fig.7 Shows the input converted to JPY
