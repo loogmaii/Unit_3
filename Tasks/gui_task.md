@@ -179,5 +179,124 @@ Create a Currency Converter GUI that takes an integer representing an amount fro
 ⚠️ Remember to validate user inputs
 
 ## Code
-  
+
+gui_task.py    
+    
+```py
+from kivymd.app import MDApp
+
+class gui_task(MDApp):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.input = 0
+
+    def build(self):
+        return
+
+    def val_input(self):
+        if not self.root.ids.input.text.isdigit():
+            self.root.ids.final_amount.text = "Please enter a valid number"
+        number = int(self.root.ids.input.text)
+        self.input = number
+
+    def convert_usd(self):
+        self.converted = round(self.input * 0.031, 2)
+        self.root.ids.final_amount.text = f" {self.converted} USD"
+
+    def convert_jpy(self):
+        self.converted = round(self.input * 3.97, 2)
+        self.root.ids.final_amount.text= f" {self.converted} JPY"
+
+
+app = gui_task()
+app.run()
+```
+gui_task.kv
+
+```py    
+Screen:
+    size: 500,500
+
+    MDBoxLayout:
+        id: main_box
+        orientation: 'vertical'
+        size_hint:1,.6
+        pos_hint: {'center_x':.5, 'center_y':.6}
+
+        MDLabel:
+            id: title
+            text: "Currency Converter"
+            font_style: "H4"
+            pos_hint: {"center_x": .5}
+            halign: "center"
+
+        MDTextField:
+            id: input
+            hint_text: "Enter Amount in THB"
+            pos_hint: {'center_x':.5}
+            size_hint: .7, .35
+            on_text:
+                app.val_input()
+
+        MDBoxLayout:
+            id: currency_box
+            orientation: 'horizontal'
+            size_hint:1,.6
+            pos_hint: {'center_x':.5, 'center_y':.5}
+
+
+            MDLabel:
+                id : click_con
+                text: "CLICK TO CONVERT"
+                halign: 'center'
+                size_hint: .275, .35
+                pos_hint: {'center_x':.5,'center_y': .5}
+
+            MDBoxLayout:
+                id: button_result
+                orientation:"vertical"
+                size_hint: .3, 1
+
+
+                MDBoxLayout:
+                    id: buttons
+                    orientation: "horizontal"
+                    size_hint: .55, 1
+                    pos_hint: {'center_x':.7, 'center_y':.1}
+
+                    MDRaisedButton:
+                        id: usd
+                        text: "USD"
+                        pos_hint: {"center_x": .4, "center_y": .45}
+                        on_release: app.convert_usd()
+                        md_bg_color:"#000066"
+
+                    MDRaisedButton:
+                        id: jpy
+                        text: "JPY"
+                        pos_hint: {"center_x": .75, "center_y": .45}
+                        on_release: app.convert_jpy()
+                        md_bg_color:"#FF0000"
+
+                MDLabel:
+                    id: final_amount
+                    text: "0"
+                    halign: 'center'
+                    text_color: "#000000"
+                    size_hint: .6, 1
+                    pos_hint: {'center_x':.55}
+                    font_size:70
+
+```
+    
 ## Evidence
+
+<img width="806" alt="Screen Shot 2566-01-31 at 12 50 30" src="https://user-images.githubusercontent.com/111941936/215658525-794e1a7f-bb18-4d08-98ba-571f8a661a8a.png">
+
+<sub> Fig.5 Shows the program
+    
+<img width="806" alt="Screen Shot 2566-01-31 at 12 50 51" src="https://user-images.githubusercontent.com/111941936/215658588-3bf9e4d0-cc70-4aed-b00a-f2b8d25dfc9f.png">
+<sub> Fig.6 Shows the input converted to USD
+    
+<img width="806" alt="Screen Shot 2566-01-31 at 12 51 30" src="https://user-images.githubusercontent.com/111941936/215658663-dba01607-47bf-4905-ba44-3c52414e3da7.png">
+<sub> Fig.7 Shows the input converted to JPY
