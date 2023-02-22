@@ -22,3 +22,10 @@ Kris is currently a UWC ISAK Japan G11 student, living in a boarding house. She 
 4. The client will be able to remove and add new food as well as check the updated inventory
 5. The application will catergorize the food base on owner
 6. The application will show how much space the refridgerator has left
+
+  
+  | Task No |        Planned Action       |                                       Planned Outcome                                      | Time estimate | Target completion date | Criterion |   |
+|:-------:|:---------------------------:|:------------------------------------------------------------------------------------------:|:-------------:|:----------------------:|:---------:|---|
+| 1       | First meeting with client   | To understand client problem and requirements                                              | Planning      | 30 minutes             | 5 March   | A |
+| 2       | Write down success criteria | To list down the first success criteria                                                    | Planning      | 20 minutes             | 6 March   | A |
+| 3       | Write problem definition    | Have problem definition which will identify who client is and the product that client want | Planning      | 1 hour                 | 6 March   |   |
