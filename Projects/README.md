@@ -8,7 +8,7 @@
 
 ## Problem definition
 
-Kris Wants a fridge manager for her house
+Kris is currently a UWC ISAK Japan G11 student, living in a boarding house. She enjoys living in her house very much, however, one identifyable issue is the shared refridgerator: it is extremly unorganized - not knowing which item belong to which housemate as well as expired food being left to rot. This has lead to the house smelling bad as well as arguments between housemates over ownership of the food. As residential assistant, she feels responsible to find a solution to this issue. Kris has asked Mai to create a Refridgerator Manager to keep track of items stored in it. The application will keep track of information regarding the owner, type of food, which part of the fridge the item is stored in, the experation date, and other additional notes. Since multiple housemates are sharing this database, the program will have a secure registration system.
 
 ## Proposed Solution
 
