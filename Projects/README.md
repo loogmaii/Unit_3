@@ -1,8 +1,7 @@
 # Kris' Fridge Manager
 
-![sleep-nitez](https://user-images.githubusercontent.com/111941936/220248145-769dc1c4-b3c0-4c25-ad48-0f598b2fd5b2.gif)
+![fridge phone](https://user-images.githubusercontent.com/111941936/221760786-ab80eca0-ab94-4039-a442-f05c970ddca2.jpeg)
 
-<sub>Fig.1 (“Sleep Nitez GIF - Sleep Nitez Fridge - Discover & Share GIFs”)
 
 # Criteria A: Planning
 
