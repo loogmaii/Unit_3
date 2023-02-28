@@ -2,6 +2,7 @@
 
 ![fridge phone](https://user-images.githubusercontent.com/111941936/221760786-ab80eca0-ab94-4039-a442-f05c970ddca2.jpeg)
 
+<sub> Fig.1 shows @coen_pohl_design's illustration on instagram
 
 # Criteria A: Planning
 
