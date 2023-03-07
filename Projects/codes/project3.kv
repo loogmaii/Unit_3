@@ -1,0 +1,618 @@
+creenManager:
+    StartScreen:
+        name: "StartScreen"
+
+    LoginScreen:
+        name: "LoginScreen"
+
+    RegistrationScreen:
+        name: "RegistrationScreen"
+
+    HomeScreen:
+        name: "HomeScreen"
+
+    AddItemScreen:
+        name: "AddItemScreen"
+
+    ListScreen:
+        name: "ListScreen"
+
+    emptyScreen:
+        name: "emptyScreen"
+
+    quarterScreen:
+        name: "quarterScreen"
+
+    halfScreen:
+        name: "halfScreen"
+
+    sevfiveScreen:
+        name: "sevfiveScreen"
+
+    FullScreen:
+        name: "FullScreen"
+
+<StartScreen>:
+    FitImage:
+        source:"kitchen.png"
+
+    MDRaisedButton:
+        text: 'Login'
+        font_style: "H4"
+        md_bg_color: "#a9f0fb"
+        size_hint: .19, .39
+        pos_hint: {"center_x":.305,"center_y":.577}
+        on_press: root.parent.current = "LoginScreen"
+
+    MDRaisedButton:
+        text: 'Register'
+        font_style: "H4"
+        md_bg_color: "#a9f0fb"
+        size_hint: .19, .25
+        pos_hint: {"center_x":.305,"center_y":.242}
+        on_press: root.parent.current = "RegistrationScreen"
+
+
+<LoginScreen>:
+    FitImage:
+        source:"joan-tran-IuXtdvHNc2g-unsplash.jpg"
+    MDCard:
+        size_hint: .6, .9
+        pos_hint: {"center_x":.5, "center_y":.5}
+        orientation: "vertical"
+        md_bg_color: [1,1,1,0.9]
+
+        Image:
+            source:"fridge.png"
+            size_hint: .9,.4
+            pos_hint: {"center_x":.5}
+
+        MDLabel:
+            id:login
+            size_hint: 1,.1
+            font_style: "H4"
+            text: "login"
+            halign: "center"
+
+        MDTextField:
+            id: uname
+            icon_left: "account"
+            hint_text: "enter username"
+            username: True
+            helper_text_mode: "on_error"
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+        MDTextField:
+            id:passwd
+            icon_left: "key-variant"
+            hint_text: "enter password"
+            password: True
+            helper_text_mode: "on_error"
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+        MDBoxLayout:
+            size_hint: .8,.07
+            pos_hint: {"center_x":.5}
+            MDCheckbox:
+                id: showpassword
+                size_hint: .1,1
+                pos_hint: {"center_x": .5,"center_y": .5}
+                on_active: root.show_password()
+            MDLabel:
+                text: 'Show password'
+                size_hint: .9,1
+                pos_hint: {"center_x": .5,"center_y": .5}
+
+        MDBoxLayout:
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+            MDRaisedButton:
+                text: "Back"
+                md_bg_color: "#95ebef"
+                size_hint: .1,.5
+                on_press: root.parent.current= "StartScreen"
+                pos_hint: {"center_x":.2,"center_y":.5}
+
+            MDRaisedButton:
+                id: login
+                size_hint: .1,.5
+                text: "Login"
+                on_press: root.try_login()
+                pos_hint: {"center_x":.8,"center_y":.5}
+                md_bg_color: "#EB455F"
+
+
+<RegistrationScreen>:
+    FitImage:
+        source:"joan-tran-IuXtdvHNc2g-unsplash.jpg"
+    MDCard:
+        size_hint: .6, .8
+        pos_hint: {"center_x":.5, "center_y":.5}
+        orientation: "vertical"
+        md_bg_color: [1,1,1,0.9]
+
+
+        MDLabel:
+            size_hint: 1,.1
+            font_style: "H4"
+            text: "Register"
+            halign: "center"
+
+        MDTextField:
+            id: uname
+            hint_text: "enter username "
+            icon_left: "account-plus"
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+        MDTextField:
+            id:passwd
+            hint_text: "enter password"
+            icon_left: "key-variant"
+            password: True
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+        MDTextField:
+            id:passwd_check
+            icon_left: "key-variant"
+            hint_text: "re-enter password"
+            password: True
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+        MDBoxLayout:
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+            MDRaisedButton:
+                text: "Back"
+                md_bg_color: "#95ebef"
+                size_hint: .1,.3
+                on_press: root.parent.current= "StartScreen"
+                pos_hint: {"center_x":.2,"center_y":.5}
+
+            MDRaisedButton:
+                size_hint: .1,.3
+                text: "Register"
+                on_press: root.try_register()
+                pos_hint: {"center_x":.8,"center_y":.5}
+                md_bg_color: "#EB455F"
+
+<HomeScreen>
+    FitImage:
+        source:"joan-tran-IuXtdvHNc2g-unsplash.jpg"
+    MDCard:
+        size_hint: .7, .9
+        pos_hint: {"center_x":.5, "center_y":.5}
+        orientation: "vertical"
+
+        FitImage:
+            source: "empty.png"
+
+    FloatLayout:
+        MDRectangleFlatIconButton:
+            id: newfood
+            text: "add item"
+            text_color: "white"
+            icon: "cookie-plus"
+            icon_color: "white"
+            md_bg_color: "#FF6B6B"
+            on_press: root.parent.current = "AddItemScreen"
+            size_hint: .15, .05
+            pos_hint: {"center_x":.433,"center_y":.78}
+
+        MDRectangleFlatIconButton:
+            id: viewlist
+            text: "view list"
+            text_color: "white"
+            icon: "format-list-bulleted"
+            icon_color: "white"
+            md_bg_color: "#FFD93D"
+            on_press: root.parent.current = "ListScreen"
+            size_hint: .15, .05
+            pos_hint: {"center_x":.433,"center_y":.683}
+
+        MDRectangleFlatIconButton:
+            id: occupancy
+            text: "occupancy"
+            text_color: "white"
+            icon: "fridge"
+            icon_color: "white"
+            md_bg_color: "#6BCB77"
+            on_press: root.show_occupancy()
+            size_hint: .15, .05
+            pos_hint: {"center_x":.433,"center_y":.59}
+
+        MDRectangleFlatIconButton:
+            text: "logout"
+            md_bg_color: "#4D96FF"
+            text_color: "white"
+            icon: "logout"
+            icon_color: "white"
+            on_press: root.parent.current = "StartScreen"
+            size_hint: .15, .12
+            pos_hint: {"center_x":.433,"center_y":.45}
+
+
+<AddItemScreen>
+    FitImage:
+        source:"joan-tran-IuXtdvHNc2g-unsplash.jpg"
+    MDCard:
+        size_hint: .7, .9
+        pos_hint: {"center_x":.5, "center_y":.5}
+        orientation: "vertical"
+
+        MDLabel:
+            size_hint: 1,.1
+            font_style: "H4"
+            text: "Add your item"
+            halign: "center"
+
+        #owner
+        MDTextField:
+            id: owner
+            hint_text: "enter owner's name"
+            icon_left: "account-box"
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+        #title
+        MDTextField:
+            id:title
+            hint_text: "enter title"
+            icon_left: "food"
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+        #type
+        MDBoxLayout:
+            id:type
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+            MDLabel:
+                size_hint: 1,.5
+                font_size: 16
+                pos_hint: {"center_y":.5}
+                text: "type:"
+
+            MDCheckbox:
+                id: meat
+                group: 'group2' #this group is so that all the checkboxes are linked and only one can be selected
+                size_hint: None, None
+                size: dp(48), dp(48)
+                active: True
+                on_active: root.checkbox_click_type(self, self.active, "meat")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'meat'
+                pos_hint: {"center_y":.5}
+                font_size:20
+
+            MDCheckbox:
+                id: fruits_vegetables
+                group: 'group2'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_type(self, self.active, "fruits & vegetables")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'fruits & vegetables'
+                pos_hint: {"center_y":.5}
+                font_size:20
+
+            MDCheckbox:
+                id: beverage
+                group: 'group2'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_type(self, self.active, "beverage")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'beverage'
+                pos_hint: {"center_y":.5}
+                font_size:20
+
+            MDCheckbox:
+                id: others
+                group: 'group2'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_type(self, self.active, "others")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'others'
+                pos_hint: {"center_y":.5}
+                font_size:20
+        #notes
+        MDTextField:
+            id:notes
+            hint_text: "notes"
+            icon_left: "note-edit"
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+        #location
+        MDBoxLayout:
+            id:location
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+            MDLabel:
+                size_hint: 1,.5
+                font_size: 16
+                pos_hint: {"center_y":.5}
+                text: "location:"
+
+            MDCheckbox:
+                id: upper
+                group: 'group1' #this group is so that all the checkboxes are linked and only one can be selected
+                size_hint: None, None
+                size: dp(48), dp(48)
+                active: True
+                on_active: root.checkbox_click_loc(self, self.active, "upper")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'upper'
+                pos_hint: {"center_y":.5}
+                font_size:20
+
+            MDCheckbox:
+                id: middle
+                group: 'group1'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_loc(self, self.active, "middle")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'middle'
+                pos_hint: {"center_y":.5}
+                font_size:20
+
+            MDCheckbox:
+                id: lower
+                group: 'group1'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_loc(self, self.active, "lower")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'lower'
+                font_size:20
+                pos_hint: {"center_y":.5}
+
+            MDCheckbox:
+                id: drawers
+                group: 'group1'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_loc(self, self.active, "drawers")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'drawers'
+                pos_hint: {"center_y":.5}
+                font_size:16
+
+            MDCheckbox:
+                id: door
+                group: 'group1'
+                size_hint: None, None
+                size: dp(48), dp(48)
+                on_active: root.checkbox_click_loc(self, self.active, "door")
+                pos_hint: {"center_y":.5}
+            MDLabel:
+                text: 'door'
+                pos_hint: {"center_y":.5}
+                font_size:20
+
+        # exp date
+        MDRaisedButton:
+            id:exp_date
+            text: "select expiry date"
+            text_pos_hint: {"center_x":1,"center_x":.3}
+            md_bg_color: "white"
+            text_color: "grey"
+            size_hint: .8, .05
+            pos_hint: {"center_x":.5}
+            on_press: root.date()
+
+        MDBoxLayout:
+            size_hint: .8, .1
+            pos_hint: {"center_x":.5}
+
+            MDRaisedButton:
+                text: "Back"
+                md_bg_color: "#95ebef"
+                size_hint: .1,.5
+                on_press: root.parent.current = "HomeScreen"
+                pos_hint: {"center_x":.2,"center_y":.5}
+
+            MDRaisedButton:
+                size_hint: .1,.5
+                text: "Add item"
+                on_press: root.add_item()
+                pos_hint: {"center_x":.8,"center_y":.5}
+                md_bg_color: "#EB455F"
+
+<ListScreen>:
+    FitImage:
+        source:"joan-tran-IuXtdvHNc2g-unsplash.jpg"
+
+    MDBoxLayout:
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, .9
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .9
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint: 1, .1
+
+                MDLabel:
+                    size_hint: 1, 1
+
+    MDBoxLayout:
+        size_hint: .2,.05
+        pos_hint: {"center_x":.3, "center_y":.1}
+
+        MDRaisedButton:
+            text: "Back"
+            md_bg_color: "#95ebef"
+            size_hint: .5,1
+            on_press: root.parent.current = "HomeScreen"
+            pos_hint: {"center_x":.2,"center_y":.5}
+
+    MDBoxLayout:
+        size_hint: .2,.05
+        pos_hint: {"center_x":.7, "center_y":.1}
+
+        MDRaisedButton:
+            id: delete
+            size_hint: .5,1
+            text: "Delete item(s)"
+            on_press: root.delete()
+            pos_hint: {"center_x":.8,"center_y":.5}
+            md_bg_color: "#EB455F"
+
+    MDBoxLayout:
+        size_hint:.65,.1
+        pos_hint: {"center_x":.5,"center_y":.92}
+        orientation:"horizontal"
+        radius: 30
+        md_bg_color: [1,1,1,.8]
+
+        MDTextField:
+            id:searchtext
+            size_hint: .7,1
+            hint_text:"Search for any properties"
+            pos_hint: {"center_x":.1,"center_y":.5}
+
+        MDIconButton:
+            id:search
+            on_press: root.try_search()
+            icon: 'magnify'
+            pos_hint: {"center_x":1,"center_y":.5}
+
+
+<emptyScreen>
+    FitImage:
+        source:"joan-tran-IuXtdvHNc2g-unsplash.jpg"
+    MDCard:
+        size_hint: .7, .9
+        pos_hint: {"center_x":.5, "center_y":.5}
+        orientation: "vertical"
+        FitImage:
+            source: "empty.png"
+
+    FloatLayout:
+        MDRaisedButton:
+            size_hint: .2,.005
+            pos_hint: {"center_x":.5, "center_y":.92}
+            text: "Back"
+            on_press: root.parent.current = "HomeScreen"
+            md_bg_color: "#EB455F"
+        MDLabel:
+            size_hint: 1,.18
+            font_size: 30
+            text: "The refrigerator is empty"
+            halign: "center"
+
+<quarterScreen>
+    FitImage:
+        source:"joan-tran-IuXtdvHNc2g-unsplash.jpg"
+    MDCard:
+        size_hint: .7, .9
+        pos_hint: {"center_x":.5, "center_y":.5}
+        orientation: "vertical"
+        FitImage:
+            source: "25%.png"
+
+    FloatLayout:
+        FloatLayout:
+        MDRaisedButton:
+            size_hint: .2,.005
+            pos_hint: {"center_x":.5, "center_y":.92}
+            text: "Back"
+            on_press: root.parent.current = "HomeScreen"
+            md_bg_color: "#EB455F"
+        MDLabel:
+            size_hint: 1,.18
+            font_size: 30
+            text: "The refrigerator is at 25% capacity"
+            halign: "center"
+
+<halfScreen>
+    FitImage:
+        source:"joan-tran-IuXtdvHNc2g-unsplash.jpg"
+    MDCard:
+        size_hint: .7, .9
+        pos_hint: {"center_x":.5, "center_y":.5}
+        orientation: "vertical"
+        FitImage:
+            source: "50%.png"
+
+    FloatLayout:
+        MDRaisedButton:
+            size_hint: .2,.005
+            pos_hint: {"center_x":.5, "center_y":.92}
+            text: "Back"
+            on_press: root.parent.current = "HomeScreen"
+            md_bg_color: "#EB455F"
+        MDLabel:
+            size_hint: 1,.18
+            font_size: 30
+            text: "The refrigerator is at 50% capacity"
+            halign: "center"
+
+
+<sevfiveScreen>
+    FitImage:
+        source:"joan-tran-IuXtdvHNc2g-unsplash.jpg"
+    MDCard:
+        size_hint: .7, .9
+        pos_hint: {"center_x":.5, "center_y":.5}
+        orientation: "vertical"
+        FitImage:
+            source: "75%.png"
+
+    FloatLayout:
+        MDRaisedButton:
+            size_hint: .2,.005
+            pos_hint: {"center_x":.5, "center_y":.92}
+            text: "Back"
+            on_press: root.parent.current = "HomeScreen"
+            md_bg_color: "#EB455F"
+        MDLabel:
+            size_hint: 1,.18
+            font_size: 30
+            text: "The refrigerator is at 75% capacity"
+            halign: "center"
+
+<FullScreen>
+    FitImage:
+        source:"joan-tran-IuXtdvHNc2g-unsplash.jpg"
+    MDCard:
+        size_hint: .7, .9
+        pos_hint: {"center_x":.5, "center_y":.5}
+        orientation: "vertical"
+        FitImage:
+            source: "100%.png"
+
+    FloatLayout:
+        MDRaisedButton:
+            size_hint: .2,.005
+            pos_hint: {"center_x":.5, "center_y":.92}
+            text: "Back"
+            on_press: root.parent.current = "HomeScreen"
+            md_bg_color: "#EB455F"
+        MDLabel:
+            size_hint: 1,.18
+            font_size: 30
+            text: "The refrigerator is full!"
+            halign: "center"
