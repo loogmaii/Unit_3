@@ -8,7 +8,7 @@
 
 ## Problem definition
 
-Kris is a grade 11 student at UWC ISAK Japan, residing in a boarding house. Despite enjoying living there, she has noticed a significant problem with the shared refrigerator. The fridge is disorganized, with no clear indication of which items belong to each housemate. Additionally, expired food is left to spoil, leading to a foul odor in the house and arguments among housemates over food ownership. As the residential assistant, Kris feels a sense of responsibility to find a solution to this problem. She has asked Mai to develop a Refrigerator Manager application to keep track of the items stored in the fridge. This application will record details such as the owner, food type, location of the item in the fridge, expiration date, and any additional notes tothen display in a simple format. To ensure privacy and security for all housemates, the program will have a secure registration system.
+Kris is a grade 11 student at UWC ISAK Japan, residing in a boarding house. Despite enjoying living there, she has noticed a significant problem with the shared refrigerator. The fridge is disorganized, with no clear indication of which items belong to each housemate. Additionally, expired food is left to spoil, leading to a foul odor in the house and arguments among housemates over food ownership. As the residential assistant, Kris feels a sense of responsibility to find a solution to this problem. She has asked Mai to develop a Refrigerator Manager application to keep track of the items stored in the fridge. This application will record details such as the owner, food type, location of the item in the fridge, expiration date, and any additional notes to then be displayed in a simple format. To ensure privacy and security for all housemates, the program will have a secure registration system.
 
 ## Success Criteria
 
@@ -21,7 +21,7 @@ Kris is a grade 11 student at UWC ISAK Japan, residing in a boarding house. Desp
 
 ## Proposed Solution
 
-My proposed application will be a Refrigerator Manager that will enable each housemate to record details of the food they store in the fridge, including the owner, food type, location in the fridge, and expiration date. The application will have a user-friendly interface that will allow users to add and remove food items easily, as well as search for specific items they are looking for from a presented table. Additionally, the app will have a secure registration system to ensure the privacy and security of all housemates' information. This solution will provide a reliable and efficient tool for managing the fridge and preventing disputes among housemates over food ownership, ensuring a more harmonious living environment. The application will be constructed using Pycharm, the Python language, and the KivyMD Language. This project will take 6 weeks and will be evaluated according to the criteria set above.
+My proposed application will be a Refrigerator Manager that will enable each housemate to record details of the food they store in the fridge. The application will have a user-friendly interface that will allow users to add and remove food items easily, as well as search for specific items they are looking for from a presented table. This solution will provide a reliable and efficient tool for managing the fridge and preventing disputes among housemates over food ownership, ensuring a more harmonious living environment. The application will be constructed using Pycharm, the Python language, and the KivyMD Language. This project will take 6 weeks and will be evaluated according to the criteria set above.
 
 ## Rationale for proposed solution
 
@@ -32,6 +32,8 @@ I chose to use the Python language to develop the application because it is a po
 To develop the application, I will use KivyMD as the framework for its graphical user interface. KivyMD is a multi-platform application development framework that is easy to learn and work with [^3]. Its pre-built user-interface elements and styles can be easily customized and integrated into Kivy-based applications, saving time and effort in developing the application's interface [^4]. While there are other alternatives such as Flutter or PyQt, I have chosen KivyMD for its ease of use, customizability, and compatibility [^5].
 
 For the application's database management system, I have selected SQLite. SQLite is a free database that requires no additional server process and is implemented on a single file [^6]. It is designed to handle large amounts of data efficiently, making it suitable for storing all kinds of information related to the stored food items . SQLite continuously updates its content, minimizing the risk of lost data in the event of a power failure or crash. Its cross-platform compatibility will enable future developers to expand the program to other platforms [^7]. In comparison to other databases available, SQLite is reliable, efficient, cost-friendly, and easy to use [^8].
+  
+
 
 Overall, the proposed Refrigerator Manager application will provide an efficient and reliable tool for managing the fridge and preventing disputes among housemates over food ownership, ensuring a more harmonious living environment.
 
