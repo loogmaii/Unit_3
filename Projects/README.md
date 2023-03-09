@@ -95,6 +95,13 @@ This is the ER diagram illustrating the relationship between the items table and
   
 ## UML diagram 
   
+<img width="1184" alt="Screen Shot 2566-03-10 at 03 43 30" src="https://user-images.githubusercontent.com/111941936/224124245-414a2103-76bd-4790-821b-d31e419dbbe5.png">
+
+<sub> Fig.10 shows the UML diagram
+
+
+This UML diagram illustrates the classes and methods utilized during the development of the application. It showcases two primary parent classes, namely MDApp and MDScreen. All the classes inherit the methods and attributes of these parent classes, which is demonstrated by the arrows displayed on the diagram.
+  
 ## Test plan
 | Description         | Test Type                    | Input                                                                                                                                                                                                               | Expected output                                                                                                                                                                                                                                                                                                                                                                                                             |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
