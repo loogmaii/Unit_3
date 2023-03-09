@@ -155,6 +155,159 @@ This UML diagram for the OOP classes illustrates the classes and methods utilize
 | 33      | Write Criteria C                                              | Write the code descriptions as well as the specifics of the techniques implemented.                                             | Evaluation   | 2 hours       | 7 March         | C         |
 | 34      | Film final video                                              | Video demonstration of all success criterias operating and functioning within the built application                             | Evaluation   | 1 hours       | 8 March         | D         |
 
+# Criteria C: Development 
+
+## Techniques used
+  
+1. OOP paradigm
+2. KivyMD Library
+3. Relational databases
+4. SQLite, ORM
+5. functions
+6. if statements
+7. for loop
+  
+## Coding in Python
+  
+```py
+import sqlite3
+from secure_password import encrypt_password
+from kivymd.uix.pickers import MDDatePicker
+from database_library import database_worker
+from kivymd.app import MDApp
+from kivymd.uix.screen import MDScreen
+from kivymd.uix.datatables import MDDataTable
+from kivymd.uix.dialog import MDDialog
+```
+  
+```py
+def show_occupancy(self):
+    full = 50 #max capacity
+    db = sqlite3.connect("project3.db")
+    c = db.cursor()
+    c.execute("SELECT COUNT(*) FROM items") #how many items are there
+    amount = c.fetchone()[0]
+    db.close()
+    percentage = amount / full * 100
+    print(percentage)
+    if percentage == 0:
+        self.parent.current = "emptyScreen"
+    if percentage <= 25:
+        self.parent.current = "quarterScreen"
+    elif percentage <= 50:
+        self.parent.current = "halfScreen"
+    elif percentage <= 100:
+        self.parent.current = "sevfiveScreen"
+    elif percentage == 100:
+        self.parent.current = "fullScreen"  
+
+    def try_login(self):
+        # Get the input username and password and print it
+        uname = self.ids.uname.text
+        passwd = self.ids.passwd.text
+        query = f"SELECT * from users WHERE username='{uname}' and password='{passwd}'"
+        db = database_worker("project3.db")
+        result = db.search(query=query)
+        db.close()
+        if len(result) == 1:
+            print("Login successful")
+            self.parent.current = "HomeScreen"
+        else:
+            print("Login incorrect")
+            self.ids.passwd.helper_text = "Check your password"
+            self.ids.passwd.error = True
+            self.ids.uname.helper_text = "Check your username"
+            self.ids.uname.error = AttributeError
+            self.ids.uname.text = ""
+            self.ids.passwd.text = ""
+            #pop up
+            dialog = MDDialog(title="User not found",
+                              text=f"Username '{self.ids.uname.text}' does not have an account.")
+            dialog.open()
+
+    def show_password(self): #make input password visible
+        password_field = self.ids.passwd
+        if password_field.password:
+            password_field.password = False
+            password_field.helper_text_mode = 'persistent'
+        else:
+            password_field.password = True
+            password_field.helper_text_mode = 'on_focus'
+                          
+    def add_item(self):
+        owner = self.ids.owner.text
+        title = self.ids.title.text
+        exp_date = self.selected_date
+        location = self.selected_location
+        type = self.selected_type
+        notes = self.ids.notes.text
+        db = database_worker("project3.db")
+        # add items to the database
+        query = f"INSERT into items (owner, title, exp_date,type,location,notes) values('{owner}', '{title}','{exp_date}','{location}','{type}','{notes}')"
+        db.run_save(query)
+        db.close()
+        print("item added")
+        self.parent.current = "HomeScreen"
+        # pop up
+        dialog = MDDialog(title="Item added",
+                          text=f"{self.ids.owner.text}'s {self.ids.title.text} has been added!")
+        dialog.open()
+    def date(self): # to select expiry date
+        date_dialog = MDDatePicker()
+        date_dialog.bind(on_save=self.on_save)
+        date_dialog.open()
+    def on_save(self,instance, value, date_range): #to save the selected date into the database
+        self.selected_date=value
+        print(value)
+        self.ids.exp_date.text = f"{value}"
+
+    #check boxes for categorising the food
+    def checkbox_click_type(self, checkbox, value, location):
+        if value:  # if the check is true
+            self.selected_location = location
+            print(location)
+            self.ids.location.text = f"{location}"
+                          
+```
+  
+## Coding in Kivy
+  
+```py
+ScreenManager:
+    StartScreen:
+        name: "StartScreen"
+
+    LoginScreen:
+        name: "LoginScreen"
+
+    RegistrationScreen:
+        name: "RegistrationScreen"
+
+    HomeScreen:
+        name: "HomeScreen"
+
+    AddItemScreen:
+        name: "AddItemScreen"
+
+    ListScreen:
+        name: "ListScreen"
+
+    emptyScreen:
+        name: "emptyScreen"
+
+    quarterScreen:
+        name: "quarterScreen"
+
+    halfScreen:
+        name: "halfScreen"
+
+    sevfiveScreen:
+        name: "sevfiveScreen"
+
+    FullScreen:
+        name: "FullScreen"  
+```
+  
 [^1]: Python Software Foundation. (2021). Python Usage. https://www.python.org/about/success/
 [^2]: Rose, J. (2020). Why Python is so popular with developers: 3 reasons the language has exploded. TechRepublic. https://www.techrepublic.com/article/why-python-is-so-popular-with-developers-3-reasons-the-language-has-exploded/
 [^3]: KivyMD. (n.d.). KivyMD: Introduction. https://kivymd.readthedocs.io/en/latest/introduction/
