@@ -19,6 +19,18 @@ My proposed application will be a Refrigerator Manager that will enable each hou
 5. The client will have a search function available to locate specific items within the presented table.
 6. The application will display the amount of remaining space in the refrigerator.
 
+## Aproval from the client
+  
+<img width="1029" alt="Screen Shot 2566-03-09 at 12 58 30" src="https://user-images.githubusercontent.com/111941936/223913217-136310a3-c9c6-4ae1-9643-1016c292b369.png">  
+  
+<sub> Fig.2 shows an email sent to the client in regards to the success criteria
+  
+  
+<img width="1029" alt="Screen Shot 2566-03-09 at 13 00 04" src="https://user-images.githubusercontent.com/111941936/223913400-e02f7836-cc72-42d3-ab77-1c77f054f5d5.png">
+
+<sub> Fig.3 shows the client approving
+  
+  
 ## Proposed Solution
 
 My proposed application will be a Refrigerator Manager that will enable each housemate to record details of the food they store in the fridge. The application will have a user-friendly interface that will allow users to add and remove food items easily, as well as search for specific items they are looking for from a presented table. This solution will provide a reliable and efficient tool for managing the fridge and preventing disputes among housemates over food ownership, ensuring a more harmonious living environment. The application will be constructed using Pycharm, the Python language, and the KivyMD Language. This project will take 6 weeks and will be evaluated according to the criteria set above.
@@ -36,6 +48,24 @@ For the application's database management system, I have selected SQLite. SQLite
 Overall, the proposed Refrigerator Manager application will provide an efficient and reliable tool for managing the fridge and preventing disputes among housemates over food ownership, ensuring a more harmonious living environment.
 
 
+
+# Criteria B: Design
+  
+## System diagram
+## Wireframe diagram
+## Flow diagrams
+## ER diagram
+## UML diagram 
+  
+## Test plan
+  
+| Description         | Test Type                       | Input                                                     | Expected output |
+|---------------------|---------------------------------|-----------------------------------------------------------|-----------------|
+| Registration System | Functional: Integration testing | 1. Run the program 2.Click the "Register" button 3.enter  | wshdwfyewgfyew  |
+|                     |                                 |                                                           |                 |  
+  
+## Task Record
+  
 | Task No |                         Planned Action                        |                                                         Planned Outcome                                                         | Design cycle | Time Estimate | Completion date | Criterion |
 |:-------:|:-------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------:|:------------:|:-------------:|:---------------:|-----------|
 | 1       | First meeting with client                                     | To understand client problem and requirements                                                                                   | Planning     | 30 minutes    | 1 March         | A         |
