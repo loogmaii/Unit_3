@@ -86,6 +86,13 @@ This function delete records from the "items" table from "project3.db" based on 
 This function calculates and displays the occupancy rate of the fridge based on the number of items stored in the "project3.db" database by running it through an equation. It sets the screen based on the occupancy rate, with different screens associated with different ranges of occupancy percentage. 
   
 ## ER diagram
+  
+<img width="1116" alt="Screen Shot 2566-03-10 at 03 00 02" src="https://user-images.githubusercontent.com/111941936/224115135-51248dd6-370d-4d73-a8d0-4d36131e4c37.png">
+  
+<sub> Fig.9 shows the ER diagram
+
+This is the ER diagram illustrating the relationship between the items table and users table from the "project3.db" database. In the items table, there are 7 different columns including id, owner, title, exp_date, location, type, and notes(shown above) which each column will have the specific data type after the column name. The second table has 3 columns which are username, id, and password. This diagram also shows that 1 user can have multiple items. The underlined column name is the primary key which have to be unique and for these 2 tables the primary key will be the id.
+  
 ## UML diagram 
   
 ## Test plan
