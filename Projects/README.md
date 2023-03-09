@@ -60,6 +60,13 @@ Overall, the proposed Refrigerator Manager application will provide an efficient
 A visual representation of the system, its parts, and how they relate to one another is provided by the system diagram. This displays the input (keyboard) to the output (various systems used in this project, including versions of the programming language (Python and KivyMD), the computer version and detail (Processor, version, memory, etc.), the module and database, and the output screen (application interface on the computer screen).
   
 ## Wireframe diagram
+  
+![Diagrams-4](https://user-images.githubusercontent.com/111941936/224073234-737e51b1-c4f5-4f75-bb9b-a01544852f52.jpg)
+
+<sub> Fig.5 shows the Wireframe diagram
+  
+This wireframe diagram's objective is to provide a visual representation of the user interface design that outlines the application's structure and layout. The wireframe also shows how various screens will be accessed via various buttons. The user can see which screen will open when they touch and release the button according to the arrows that extend from the button to the screen.
+  
 ## Flow diagrams
 ## ER diagram
 ## UML diagram 
