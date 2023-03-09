@@ -1,4 +1,4 @@
-# Kris' Fridge Manager
+# Kris' Fridge Manager (Unit 3 project)
 
 ![fridge phone](https://user-images.githubusercontent.com/111941936/221760786-ab80eca0-ab94-4039-a442-f05c970ddca2.jpeg)
 
@@ -52,6 +52,13 @@ Overall, the proposed Refrigerator Manager application will provide an efficient
 # Criteria B: Design
   
 ## System diagram
+  
+<img width="904" alt="Screen Shot 2566-03-09 at 22 44 23" src="https://user-images.githubusercontent.com/111941936/224043072-a27ab6bd-d805-4b9c-9198-622809ad2006.png">
+
+<sub> Fig.4 shows the system diagram
+  
+A visual representation of the system, its parts, and how they relate to one another is provided by the system diagram. This displays the input (keyboard) to the output (various systems used in this project, including versions of the programming language (Python and KivyMD), the computer version and detail (Processor, version, memory, etc.), the module and database, and the output screen (application interface on the computer screen).
+  
 ## Wireframe diagram
 ## Flow diagrams
 ## ER diagram
