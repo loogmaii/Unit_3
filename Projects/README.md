@@ -47,10 +47,8 @@ For the application's database management system, I have selected SQLite. SQLite
   
 Overall, the proposed Refrigerator Manager application will provide an efficient and reliable tool for managing the fridge and preventing disputes among housemates over food ownership, ensuring a more harmonious living environment.
 
-
-
 # Criteria B: Design
-  
+
 ## System diagram
   
 <img width="904" alt="Screen Shot 2566-03-09 at 22 44 23" src="https://user-images.githubusercontent.com/111941936/224043072-a27ab6bd-d805-4b9c-9198-622809ad2006.png">
@@ -68,6 +66,25 @@ A visual representation of the system, its parts, and how they relate to one ano
 This wireframe diagram's objective is to provide a visual representation of the user interface design that outlines the application's structure and layout. The wireframe also shows how various screens will be accessed via various buttons. The user can see which screen will open when they touch and release the button according to the arrows that extend from the button to the screen.
   
 ## Flow diagrams
+
+<img width="413" alt="Screen Shot 2566-03-10 at 01 32 32" src="https://user-images.githubusercontent.com/111941936/224089634-2dfa6e78-bcf4-469e-9af5-916ff8e8f9e3.png">
+  
+<sub> Fig.6 shows the flow diagram for the try_login function
+  
+This function validates the username and password inputted by the user to login. It retrieves the username and password from the textfields, creates an query to search the "users" table of the database "project3.db" for a record that matches the inputted username and password. If the query returns exactly one result, the function direct the current screen to "HomeScreen" and prints "Login successful". Otherwise, the function sets error messages on the textfields and displays a pop-up message informing the user that the provided username does not have an account in the system.
+
+<img width="200" alt="Screen Shot 2566-03-10 at 01 58 22" src="https://user-images.githubusercontent.com/111941936/224099904-aa5b9d0b-d157-4a0f-9673-741ce45ec95f.png">
+
+<sub> Fig.7 shows the flow diagram for the delete function  
+  
+This function delete records from the "items" table from "project3.db" based on the checked rows in a user interface data table. The function retrieves the selected rows from the data table to then obtain the "id" value from each row and creating a query to delete the corresponding record from the database. After deleting the selected rows from the database, the data table was then updated, and then a pop-up message confirms that the item(s) have been deleted.
+  
+<img width="658" alt="Screen Shot 2566-03-10 at 02 26 47" src="https://user-images.githubusercontent.com/111941936/224107323-46f55e86-3a71-4c0e-aa2f-9137af07de94.png">
+
+<sub> Fig.8 shows the flow diagram for the show_occupancy function
+  
+This function calculates and displays the occupancy rate of the fridge based on the number of items stored in the "project3.db" database by running it through an equation. It sets the screen based on the occupancy rate, with different screens associated with different ranges of occupancy percentage. 
+  
 ## ER diagram
 ## UML diagram 
   
