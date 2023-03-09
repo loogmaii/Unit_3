@@ -91,7 +91,7 @@ This function calculates and displays the occupancy rate of the fridge based on 
   
 <sub> Fig.9 shows the ER diagram
 
-This is the ER diagram illustrating the relationship between the items table and users table from the "project3.db" database. In the items table, there are 7 different columns including id, owner, title, exp_date, location, type, and notes(shown above) which each column will have the specific data type after the column name. The second table has 3 columns which are username, id, and password. This diagram also shows that 1 user can have multiple items. The underlined column name is the primary key which have to be unique and for these 2 tables the primary key will be the id.
+This is the ER diagram for the database illustrating the relationship between the items table and users table from the "project3.db" database. In the items table, there are 7 different columns including id, owner, title, exp_date, location, type, and notes(shown above) which each column will have the specific data type after the column name. The second table has 3 columns which are username, id, and password. This diagram also shows that 1 user can have multiple items. The underlined column name is the primary key which have to be unique and for these 2 tables the primary key will be the id.
   
 ## UML diagram 
   
@@ -100,7 +100,7 @@ This is the ER diagram illustrating the relationship between the items table and
 <sub> Fig.10 shows the UML diagram
 
 
-This UML diagram illustrates the classes and methods utilized during the development of the application. It showcases two primary parent classes, namely MDApp and MDScreen. All the classes inherit the methods and attributes of these parent classes, which is demonstrated by the arrows displayed on the diagram.
+This UML diagram for the OOP classes illustrates the classes and methods utilized during the development of the application. It showcases two primary parent classes, namely MDApp and MDScreen. All the classes inherit the methods and attributes of these parent classes, which is demonstrated by the arrows displayed on the diagram.
   
 ## Test plan
 | Description         | Test Type                    | Input                                                                                                                                                                                                               | Expected output                                                                                                                                                                                                                                                                                                                                                                                                             |
