@@ -179,6 +179,7 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.datatables import MDDataTable
 from kivymd.uix.dialog import MDDialog
 ```
+## show occupancy function
   
 ```py
 def show_occupancy(self):
