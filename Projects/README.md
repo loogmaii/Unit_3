@@ -4,6 +4,15 @@
 
 <sub> Fig.1 shows @coen_pohl_design's illustration on instagram
 
+# Table of Contents
+1. [Criteria A: Planning](#criteria-a-planning)
+
+2. [Criteria B: Design](#criteria-b-design)
+   
+3. [Criteria C: Development](#criteria-c-development)
+
+4. [Criteria D: Functionality](#criteria-d-functionality)
+  
 # Criteria A: Planning
 
 ## Problem definition
@@ -472,10 +481,11 @@ MDCheckbox:
                    
 The MDCheckbox is a custom Checkbox that implements Material Design guidelines. The code assigns an ID of "meat" to the MDCheckbox and specifies its size and position. By setting the "group" attribute to "group2," this code ensures that only one checkbox in the group can be selected at a time. This implementation was through my use pattern recognition as I could copy this code structure and paste it to create more checkboxes whilst ensuring that only 1 could be selected.
 
-### MDBoxLayout
+# Criteria D: Functionality                   
+                   
+The video:
                    
                    
-                          
 [^1]: Python Software Foundation. (2021). Python Usage. https://www.python.org/about/success/
 [^2]: Rose, J. (2020). Why Python is so popular with developers: 3 reasons the language has exploded. TechRepublic. https://www.techrepublic.com/article/why-python-is-so-popular-with-developers-3-reasons-the-language-has-exploded/
 [^3]: KivyMD. (n.d.). KivyMD: Introduction. https://kivymd.readthedocs.io/en/latest/introduction/
