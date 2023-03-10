@@ -166,8 +166,15 @@ This UML diagram for the OOP classes illustrates the classes and methods utilize
 5. functions
 6. if statements
 7. for loop
+
+## Computational thinking
   
-## Coding in Python
+1. decomposition
+2. pattern recognition
+3. abstraction 
+4. algorithm design
+  
+## Python file: "project3.py"
   
 ```py
 import sqlite3
@@ -179,29 +186,54 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.datatables import MDDataTable
 from kivymd.uix.dialog import MDDialog
 ```
-## show occupancy function
+
+### database worker
+  
+```py  
+def __init__(self, name):
+    self.connection = sqlite3.connect(name)
+    self.cursor = self.connection.cursor()
+
+def search(self, query):
+    result = self.cursor.execute(query).fetchall()
+    return result
+
+def run_save(self, query):
+    self.cursor.execute(query)
+    self.connection.commit()
+
+def close(self):
+    self.connection.close()  
+```  
+  
+### Registering  
+
+#### Retrieving and storing inputs  
+
+```py  
+uname = self.ids.uname.text
+passwd = self.ids.passwd.text
+passwd_check = self.ids.passwd_check.text
+# Check if username exists
+db = database_worker("project3.db")
+query = f"SELECT * from users WHERE username ='{uname}'"
+result = db.search(query=query)  
+```  
+  
+#### Hash
   
 ```py
-def show_occupancy(self):
-    full = 50 #max capacity
-    db = sqlite3.connect("project3.db")
-    c = db.cursor()
-    c.execute("SELECT COUNT(*) FROM items") #how many items are there
-    amount = c.fetchone()[0]
-    db.close()
-    percentage = amount / full * 100
-    print(percentage)
-    if percentage == 0:
-        self.parent.current = "emptyScreen"
-    if percentage <= 25:
-        self.parent.current = "quarterScreen"
-    elif percentage <= 50:
-        self.parent.current = "halfScreen"
-    elif percentage <= 100:
-        self.parent.current = "sevfiveScreen"
-    elif percentage == 100:
-        self.parent.current = "fullScreen"  
-
+hash = encrypt_password(passwd)
+db = database_worker("project3.db")
+# add user to the database
+query = f"INSERT into users ( password, username) values('{passwd}','{uname}')"
+db.run_save(query)
+db.close()  
+```  
+  
+### loging in 
+  
+```py  
     def try_login(self):
         # Get the input username and password and print it
         uname = self.ids.uname.text
@@ -221,58 +253,51 @@ def show_occupancy(self):
             self.ids.uname.error = AttributeError
             self.ids.uname.text = ""
             self.ids.passwd.text = ""
-            #pop up
-            dialog = MDDialog(title="User not found",
-                              text=f"Username '{self.ids.uname.text}' does not have an account.")
-            dialog.open()
-
-    def show_password(self): #make input password visible
-        password_field = self.ids.passwd
-        if password_field.password:
-            password_field.password = False
-            password_field.helper_text_mode = 'persistent'
-        else:
-            password_field.password = True
-            password_field.helper_text_mode = 'on_focus'
+```  
+### Toggling text's visibility
                           
-    def add_item(self):
-        owner = self.ids.owner.text
-        title = self.ids.title.text
-        exp_date = self.selected_date
-        location = self.selected_location
-        type = self.selected_type
-        notes = self.ids.notes.text
-        db = database_worker("project3.db")
-        # add items to the database
-        query = f"INSERT into items (owner, title, exp_date,type,location,notes) values('{owner}', '{title}','{exp_date}','{location}','{type}','{notes}')"
-        db.run_save(query)
-        db.close()
-        print("item added")
-        self.parent.current = "HomeScreen"
-        # pop up
-        dialog = MDDialog(title="Item added",
-                          text=f"{self.ids.owner.text}'s {self.ids.title.text} has been added!")
-        dialog.open()
-    def date(self): # to select expiry date
-        date_dialog = MDDatePicker()
-        date_dialog.bind(on_save=self.on_save)
-        date_dialog.open()
-    def on_save(self,instance, value, date_range): #to save the selected date into the database
-        self.selected_date=value
-        print(value)
-        self.ids.exp_date.text = f"{value}"
+```                          
+def show_password(self): #make input password visible
+    password_field = self.ids.passwd
+    if password_field.password:
+        password_field.password = False
+        password_field.helper_text_mode = 'persistent'
+    else:
+        password_field.password = True
+        password_field.helper_text_mode = 'on_focus'
+```       
 
-    #check boxes for categorising the food
-    def checkbox_click_type(self, checkbox, value, location):
-        if value:  # if the check is true
-            self.selected_location = location
-            print(location)
-            self.ids.location.text = f"{location}"
+### Adding an Item  
+  
+  
+## DatePicker
                           
+```py                           
+def date(self): # to select expiry date
+    date_dialog = MDDatePicker()
+    date_dialog.bind(on_save=self.on_save)
+    date_dialog.open()
+def on_save(self,instance, value, date_range): #to save the selected date into the database
+    self.selected_date=value
+    print(value)
+    self.ids.exp_date.text = f"{value}"
 ```
+                          
+## Checkboxes
+
+```py                          
+#check boxes for categorising the food
+def checkbox_click_type(self, checkbox, value, location):
+    if value:  # if the check is true
+        self.selected_location = location
+        print(location)
+        self.ids.location.text = f"{location}"
+```                          
+
   
-## Coding in Kivy
-  
+## Kivy File: "project3.kv"
+
+### Screen Manager                          
 ```py
 ScreenManager:
     StartScreen:
@@ -308,7 +333,53 @@ ScreenManager:
     FullScreen:
         name: "FullScreen"  
 ```
-  
+                          
+### MDTextField
+                          
+```py
+MDTextField:
+  id: uname
+  icon_left: "account"
+  hint_text: "enter username"
+  username: True
+  helper_text_mode: "on_error"
+  size_hint: .8, .1
+  pos_hint: {"center_x":.5}                          
+ ```                    
+ 
+### Float Layout and MDRectangleFlatIconButton
+
+```py
+FloatLayout:
+  MDRectangleFlatIconButton:
+      id: newfood
+      text: "add item"
+      text_color: "white"
+      icon: "cookie-plus"
+      icon_color: "white"
+      md_bg_color: "#FF6B6B"
+      on_press: root.parent.current = "AddItemScreen"
+      size_hint: .15, .05
+      pos_hint: {"center_x":.433,"center_y":.78}                          
+```                 
+                          
+### MDCheckbox
+
+```py                          
+MDCheckbox:
+      id: meat
+      group: 'group2' #this group is so that all the checkboxes are linked and only one can be selected
+      size_hint: None, None
+      size: dp(48), dp(48)
+      active: True
+      on_active: root.checkbox_click_type(self, self.active, "meat")
+      pos_hint: {"center_y":.5}
+  MDLabel:
+      text: 'meat'
+      pos_hint: {"center_y":.5}
+      font_size:20                          
+```                          
+                          
 [^1]: Python Software Foundation. (2021). Python Usage. https://www.python.org/about/success/
 [^2]: Rose, J. (2020). Why Python is so popular with developers: 3 reasons the language has exploded. TechRepublic. https://www.techrepublic.com/article/why-python-is-so-popular-with-developers-3-reasons-the-language-has-exploded/
 [^3]: KivyMD. (n.d.). KivyMD: Introduction. https://kivymd.readthedocs.io/en/latest/introduction/
