@@ -1,5 +1,5 @@
-import sqlite3
-from quizes.quiz047.secure_password import encrypt_password
+mport sqlite3
+from secure_password import encrypt_password
 from kivymd.uix.pickers import MDDatePicker
 from database_library import database_worker
 from kivymd.app import MDApp
@@ -28,10 +28,10 @@ class StartScreen(MDScreen):
 
 class HomeScreen(MDScreen):
     def show_occupancy(self):
-        full = 50
+        full = 50 #max capacity
         db = sqlite3.connect("project3.db")
         c = db.cursor()
-        c.execute("SELECT COUNT(*) FROM items")
+        c.execute("SELECT COUNT(*) FROM items") #how many items are there
         amount = c.fetchone()[0]
         db.close()
         percentage = amount / full * 100
@@ -47,10 +47,8 @@ class HomeScreen(MDScreen):
         elif percentage == 100:
             self.parent.current = "fullScreen"
 
-
 class LoginScreen(MDScreen):
     def try_login(self):
-        print("User tried to login")
         # Get the input username and password and print it
         uname = self.ids.uname.text
         passwd = self.ids.passwd.text
@@ -69,11 +67,12 @@ class LoginScreen(MDScreen):
             self.ids.uname.error = AttributeError
             self.ids.uname.text = ""
             self.ids.passwd.text = ""
+            #pop up
             dialog = MDDialog(title="User not found",
                               text=f"Username '{self.ids.uname.text}' does not have an account.")
             dialog.open()
 
-    def show_password(self):
+    def show_password(self): #make input password visible
         password_field = self.ids.passwd
         if password_field.password:
             password_field.password = False
@@ -91,7 +90,7 @@ class RegistrationScreen(MDScreen):
         db = database_worker("project3.db")
         query = f"SELECT * from users WHERE username ='{uname}'"
         result = db.search(query=query)
-        if len(result) == 1:
+        if len(result) == 1: #user already exists
             dialog = MDDialog(title="User exists",
                               text=f"The username you entered: {self.ids.uname.text} already exists.")
             dialog.open()
@@ -105,6 +104,7 @@ class RegistrationScreen(MDScreen):
         else:
             hash = encrypt_password(passwd)
             db = database_worker("project3.db")
+            # add user to the database
             query = f"INSERT into users ( password, username) values('{passwd}','{uname}')"
             db.run_save(query)
             db.close()
@@ -129,36 +129,41 @@ class AddItemScreen(MDScreen):
         type = self.selected_type
         notes = self.ids.notes.text
         db = database_worker("project3.db")
+        # add items to the database
         query = f"INSERT into items (owner, title, exp_date,type,location,notes) values('{owner}', '{title}','{exp_date}','{location}','{type}','{notes}')"
         db.run_save(query)
         db.close()
         print("item added")
         self.parent.current = "HomeScreen"
+        # pop up
         dialog = MDDialog(title="Item added",
                           text=f"{self.ids.owner.text}'s {self.ids.title.text} has been added!")
         dialog.open()
-    def date(self):
+    def date(self): # to select expiry date
         date_dialog = MDDatePicker()
         date_dialog.bind(on_save=self.on_save)
         date_dialog.open()
-    def on_save(self,instance, value, date_range):
+    def on_save(self,instance, value, date_range): #to save the selected date into the database
         self.selected_date=value
         print(value)
         self.ids.exp_date.text = f"{value}"
 
-    def checkbox_click_type(self, checkbox, value, location):
+    #check boxes for categorising the food
+    def checkbox_click_1(self, checkbox, value, location):
         if value:  # if the check is true
             self.selected_location = location
             print(location)
             self.ids.location.text = f"{location}"
 
-    def checkbox_click_loc(self, checkbox, value, type):
+    #check boxes for selecting the location
+    def checkbox_click_2(self, checkbox, value, type):
         if value:  # if the check is true
             self.selected_type = type
             print(type)
             self.ids.type.text = f"{type}"
 
 class ListScreen(MDScreen):
+    #displaying
     data_table = None  # = empty/no value
     def update(self):
         db = database_worker("project3.db")
@@ -185,8 +190,8 @@ class ListScreen(MDScreen):
         self.update()
 
     def delete(self):
+        # ticked check boxes
         rows_checked = self.data_table.get_row_checks()
-        print("Trying to delete")
         db = database_worker("project3.db")
         for r in rows_checked:
             id = r[0]
@@ -205,9 +210,11 @@ class ListScreen(MDScreen):
         print("a row was checked", current_row)
 
     def try_search(self):
+        #search for items
         if self.ids.searchtext.text:
             db = database_worker("project3.db")
             searchword = self.ids.searchtext.text
+            # any information regarding the item
             query = f"SELECT * FROM items WHERE owner='{searchword}' or title='{searchword}' or " \
                     f"exp_date='{searchword}' or location ='{searchword}' or type='{searchword}' or notes='{searchword}'"
             data = db.search(query)
@@ -235,6 +242,7 @@ class project3(MDApp):
     def build(self):
         return
 
+#table for the food items
 create = """CREATE TABLE if not exists items(
     id INTEGER PRIMARY KEY,
     owner text,
