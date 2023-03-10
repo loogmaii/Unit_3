@@ -95,10 +95,9 @@ This is the ER diagram for the database illustrating the relationship between th
   
 ## UML diagram 
   
-<img width="1184" alt="Screen Shot 2566-03-10 at 03 43 30" src="https://user-images.githubusercontent.com/111941936/224124245-414a2103-76bd-4790-821b-d31e419dbbe5.png">
+<img width="1216" alt="Screen Shot 2566-03-10 at 19 23 31" src="https://user-images.githubusercontent.com/111941936/224291708-1aa86b27-72a2-4180-96f1-769de53d2734.png">
 
 <sub> Fig.10 shows the UML diagram
-
 
 This UML diagram for the OOP classes illustrates the classes and methods utilized during the development of the application. It showcases two primary parent classes, namely MDApp and MDScreen. All the classes inherit the methods and attributes of these parent classes, which is demonstrated by the arrows displayed on the diagram.
   
@@ -175,6 +174,20 @@ This UML diagram for the OOP classes illustrates the classes and methods utilize
 4. algorithm design
   
 ## Python file: "project3.py"
+
+### Database worker
+ 
+The class called database_worker that initializes a connection to a SQLite database with the given name.  It abstract away the details of connecting to a database, allowing the developer to interact with the database through a simplified interface. This will allow me to focus on the more complex and important aspects of the application, such as the user interface and functionality.
+  
+This class will be useful in the implementation of my application as it allows for a simplified and organized way to store and retrieve data related to the food items stored in the fridge.
+  
+```py
+class database_worker:
+    def __init__(self, name):
+        self.connection = sqlite3.connect(name)
+        self.cursor = self.connection.cursor()
+```  
+In this code the __init__ function takes one argument, which is the name of the database file to connect to. The code uses the sqlite3 library to connect to the specified database file and creates a cursor object to interact with the database. This cursor object is used to execute SQL commands and queries on the connected database. The database_worker class abstracts away the implementation details of connecting to and interacting with a database. This allows me , for the rest of the code to simply create an instance of database_worker and call its methods without worrying about the underlying database implementation.
   
 ### Registering  
 
@@ -190,8 +203,14 @@ if len(result) == 1: #user already exists
 
         dialog.open()  
 ```  
+ 
+The code is for checking whether a user with a given username already exists in the database. The first line of the code creates an object of the database_worker class and passes the name of the database file to it. The second line constructs a query to select all rows from the users table where the username matches the given username. The third line executes the query using the search() method of the database_worker class and stores the result in the result variable. The code then checks whether the length of the result is equal to 1, which means that a user with the given username already exists in the database "project3.db". If the condition is true, then a dialog box/ pop-up is created and opened using the MDDialog class of the KivyMD library. The dialog box displays a message to inform the user that the username already exists. 
+  
+This code can be used to prevent multiple users from registering with the same username, which could lead to confusion and disputes over food ownership, or the same person accidentally registering twice with different passwords. It ensures that each user has a unique username, which will facilitate efficient management of the refrigerator and improve the overall living environment.  
   
 #### Hash
+
+Hashing involves taking an input (such as a password) and converting it into a fixed-size string of characters using a mathematical function. The resulting string, known as a hash, is unique to the input, and it cannot be reversed to obtain the original password. The hash can be used as a secure way to store passwords in a database, as it is not possible to recover the original password from the hash, even if the database is compromised.  
   
 ```py
 hash = encrypt_password(passwd)
@@ -201,8 +220,17 @@ query = f"INSERT into users ( password, username) values('{passwd}','{uname}')"
 db.run_save(query)
 db.close()  
 ```  
+
+In this application, hashing is used to secure user passwords before storing them in the database. When a user creates an account or changes their password, the password is first hashed using the "encrypt_password" function before being added to the "users" table in the database. This ensures that even if the database is hacked, the hackers will not be able to retrieve the users' passwords as they are stored as hashes.
+
+The "encrypt_password" function required algorithm design. It involves designing step-by-step instructions that can be followed to solve a specific problem or perform a specific task. In this case, the function takes a password as an input, applies a mathematical algorithm to it, and outputs a hash. The function is designed to be secure, meaning that it should produce a unique hash for each input and that it should be difficult to reverse-engineer the original password from the hash. By using secure hashing algorithms, the application ensures that user data is protected, which is essential for maintaining a harmonious living environment among housemates.
   
 ### loging in 
+
+  
+#### retrieving query
+  
+Retrieving query results in Python involves executing a SQL query on a database and retrieving the results into a Python data structure. This data can then be processed, manipulated, and displayed to the user in a variety of formats depending on the application's needs.  
   
 ```py  
 def try_login(self):
@@ -214,23 +242,31 @@ def try_login(self):
     result = db.search(query=query)
     db.close()
 ```  
+This is a Python function called try_login that takes one argument self. It retrieves the values of the input fields with ids "uname" and "passwd" using the text attribute of their ids object. It then constructs a SQL query string using string formatting to search for a user in a SQLite database file "project3.db" using the retrieved username and password values. The function then creates a database_worker object passing the name of the database file and calls its search method with the constructed query string as an argument. The search method executes the query and returns a result set. The result set is assigned to the result variable. Finally, the function closes the database connection using the close method of the database_worker object.  
+
+I utilised the algorithm design aspect of computational thinking, as it is outlining the steps to be taken in order to authenticate a user and query a database. I also used abstraction, as the code abstracts away the details of the database querying and instead presents a high-level interface for user authentication. This code would be used to authenticate users and provide them with access to their stored food items. It would ensure that only authorized users are able to access and modify the data, thus providing a secure and efficient tool for managing the fridge. 
   
 ### Toggling text's visibility
                           
 ```                          
 def show_password(self): #make input password visible
-    password_field = self.ids.passwd
-    if password_field.password:
-        password_field.password = False
-        password_field.helper_text_mode = 'persistent'
-    else:
-        password_field.password = True
-        password_field.helper_text_mode = 'on_focus'
+  password_field = self.ids.passwd
+  if password_field.password:
+      password_field.password = False
+      password_field.helper_text_mode = 'persistent'
+  else:
+      password_field.password = True
+      password_field.helper_text_mode = 'on_focus'
 ```       
+The code toggles the visibility of a password field in a user interface. Within the function, the password field is identified by its ID and stored in the "password_field" variable. An if statement is then used: If the password field is currently visible, the function sets the "password" attribute to "False" to hide the password and sets the "helper_text_mode" attribute to "persistent" to display a helper message and If the password field is currently hidden, the function sets the "password" attribute to "True" to show the password and sets the "helper_text_mode" attribute to "on_focus" to only display the helper message when the field is in focus.
 
+I have used algorithm design by creating a step-by-step procedure for solving a problem. The function clearly defines the steps necessary for toggling the password field visibility and allows for easy modification or expansion of the code in the future. The proposed Refrigerator Manager application would benefit from this code by allowing users to easily toggle password visibility when necessary, enhancing their privacy and security when accessing the application.
+  
 ### Adding an Item  
   
 #### Inserting query
+
+Overall, inserting queries in Python are a critical aspect of interacting with databases and are essential for building robust data-driven applications. This query allows data to be added to a specific table in the database. The insert query takes the form of a string that specifies the table name and the values to be inserted.   
   
 ```py
 db = database_worker("project3.db")
@@ -239,6 +275,9 @@ query = f"INSERT into items (owner, title, exp_date,type,location,notes) values(
 db.run_save(query)
 db.close()  
 ```  
+This is responsible for adding food items to the database for the application. The code uses a database worker object to execute an SQL query that inserts information about the food item which includes the owner, title, expiration date, type, location, and notes. I utilised algorithm design by creating a process that outlines a set of instructions to insert data into the database. Algorithm design involves identifying the steps needed to solve a problem or complete a task. 
+  
+This process enables the refrigerator manager application to store and retrieve data effectively, ensuring a seamless user experience. By utilizing algorithm design, the application can perform create, read, update, and delete operations effectively, providing an efficient tool for managing the fridge.
   
 #### DatePicker
                           
@@ -252,17 +291,27 @@ def on_save(self,instance, value, date_range): #to save the selected date into t
     print(value)
     self.ids.exp_date.text = f"{value}"
 ```
-                          
+  
+These are two methods related to selecting an expiration date for food items in the proposed Refrigerator Manager application. 
+
+The "date" method is responsible for creating a date picker dialog box that is displayed to the user when called. It creates an instance of the MDDatePicker class which provides a graphical date picker widget for the user. The bind() method is used to attach an event listener to the on_save event, which is triggered when the user selects a date from the widget. The second method, "on_save," saves the selected date into the database and updates the text field displaying the expiration date. It is called when the user selects a date from the MDDatePicker widget. The value parameter holds the selected date in the format "yyyy-mm-dd". This method sets the selected_date attribute to the selected value and prints it to the console for debugging purposes. It also sets the exp_date text field in to display the selected date using string interpolation. 
+  
+I made use of the MDDatePicker, which simplifies the process of selecting a date and enhances the user experience of the application. I used abstraction in this code in regards to simplifying complex date selection functionality, making it easy for users to select and record expiration dates for their food items. Moreover, it highlights use of algorithm design and decomposition in creating a smooth and efficient user experience. By enabling users to quickly and easily record expiration dates for their food items, this feature contributes to the overall efficiency and reliability of the application in managing fridge contents.
+  
+  
 #### Checkboxes
 
 ```py                          
-#check boxes for categorising the food
-def checkbox_click_type(self, checkbox, value, location):
+def checkbox_click_1(self, checkbox, value, location):
     if value:  # if the check is true
         self.selected_location = location
         print(location)
         self.ids.location.text = f"{location}"
 ```                          
+
+The checkbox_click_1() function is called when the user clicks on a checkbox associated with a specific location. It takes three arguments: checkbox, value, and location. The checkbox argument is the checkbox object that was clicked on, value is the state of the checkbox (either True or False), and location is the name of the location associated with the checkbox. If the value of the checkbox is True, the function sets the selected_location variable to the value of the location argument, and then updates the text of the location input field to display the selected location using string formatting. The print(location) statement is used for debugging purposes and can be removed once the code is working correctly.
+
+For this code, I have used decomposition regarding the process of selecting a location into a single function that can be reused multiple times throughout the application. This will allow users to easily categorize the item based on the location. I used checkboxes instead of textfeild because there are only a few inputs they can enter, unlike the name of a food item, having the location be in chackboxes makes it quicker for the user to just simply select rather than having to waste time by typing it up. 
   
 ### The table
   
@@ -284,6 +333,10 @@ def on_pre_enter(self, *args):
     self.add_widget(self.data_table)
     self.update()  
 ```  
+The on_pre_enter method is used in KivyMD to specify the actions to be taken before a screen is shown. In this case, the method creates a MDDataTable object, which is a widget that displays data in a table format. The MDDataTable is customized with specific attributes like size_hint, pos_hint, use_pagination, check, and column_data to determine the size and location of the table, whether or not pagination will be used, if checkboxes will be displayed, and the column headers and their sizes, respectively. The MDDataTable object is then added to the current screen using the add_widget method, which adds a child widget to the current screen. Finally, the update method is called to update the screen with the newly added widget.
+
+This code could be used to display a table of food items stored in the refrigerator, allowing users to easily add, remove, and search for items.A function on_pre_enter that is called before a screen is displayed. This function creates a MDDataTable widget with specific column data and bindings for row and check presses. The widget is added to the screen, and the update method is called to populate the table with data. I have utilised decomposition to break down the task of creating a table widget into smaller, more manageable pieces. It also highlights the importance of abstraction, where the complexity of creating a table widget is abstracted away from the user, making it easier to use. As well as calculating the size of each column in order for all the data to be presented to the client in an easy-to-understand. The user-friendly interface of the MDDataTable widget would be a key feature of the application, as it would enable all housemates to use the app effectively, regardless of their technical skill level. 
+  
   
 ### Deleting items
   
@@ -296,7 +349,9 @@ for r in rows_checked:
     db.run_save(query)
 db.close()  
 ```
-
+ 
+This performs a database operation on selected rows in a data table. The code first retrieves the rows that have been checked in the data table using the "get_row_checks()" method. The code then creates a connection to the database using a custom database_worker class by a for loop, passing in the name of the database file. The code then loops through each row that has been checked and retrieves the id value of the row, which is then used to construct a SQL DELETE query. The "run_save()" method of the database_worker class is then called, passing in the SQL query. Finally, the database connection is closed. This code has taught me to use decomposition to break down the problem into smaller tasks, pattern recognition to identify a common operation that needs to be performed on each selected row, and algorithm design to perform the necessary database operations efficiently.
+  
 ### Searching for item(s)  
 
 ```py  
@@ -312,7 +367,10 @@ if self.ids.searchtext.text:
 else:
     self.update()  
 ```
-
+This if statement checks if the search text input is not empty. If it's not empty, it retrieves the search text, creates a query to search the database for any item whose owner, title, expiry date, location, type, or notes match the search text. I used the "or" in the query instead of "and" in order to make it more easy for the client to look up an item, rather than having to memorise all aspects regarding the item. It then retrieves the search results and updates the data table with the search results. On the other hand, if the search text input is empty, it updates the data table with all items in the database by calling the update() method. 
+  
+I used pattern recognition to identify the need to perform a search on the database since thhe more items are added, the harder it will be for the client to find their item and defeats the purpose of having the program be simple and convemient. Abstraction was used to hide the details of the database query and search functionality, thus making the code more modular and easy to understand. The algorithm design in this code involves retrieving and updating data from a database based on user input. 
+    
 #### Checking the occupancy
   
 ```py  
@@ -329,6 +387,9 @@ if percentage == 0:
 if percentage <= 25:
     self.parent.current = "quarterScreen"  
 ```  
+                   
+This calculates the percentage of capacity that is being used in the database in my case, the fridge. I started by setting a maximum capacity of the fridge at 50 items, and then connects to the database using SQLite3. The code then retrieves the number of items in the database using a SELECT COUNT(*) query, which returns a single value representing the number of rows in the "items" table. The code then closes the database connection and calculates the percentage of capacity that is being used by dividing the number of items by the maximum capacity and multiplying by 100. At first I struggled with coming up with how to present the calculated percentage in an interesting manor, but through using pattern recognition, I decided to create screens each representing a set amount of percentage - which reflecting back, may not be the most efficient and a pop up may be more efficient since it doesn't require me to impliment another screen. An if statement is then used to match the calculated percentage to the screens that the user will be directed to depending on the calculated results. This code would help users monitor the status of the refrigerator and take necessary actions to prevent overcrowding or waste.                  
+                   
 ## Kivy File: "project3.kv"
 
 ### Screen Manager                          
@@ -340,7 +401,9 @@ ScreenManager:
     LoginScreen:
         name: "LoginScreen"
 ```
-                          
+The ScreenManager provides a simple and efficient way to organize and switch between different screens in an application. Each screen is defined using a custom class that inherits from the Screen class, which allows for custom attributes and functionality to be defined for each screen. Abstraction was used 
+to make the process of managing different screens and easily switch between them easier for me.               
+                                     
 ### MDTextField
                           
 ```py
@@ -352,8 +415,11 @@ MDTextField:
   helper_text_mode: "on_error"
   size_hint: .8, .1
   pos_hint: {"center_x":.5}                          
- ```                    
- 
+ ```   
+                   
+The code creates an MDTextField widget that allows users to input text. The MDTextField is defined with an ID of "uname" and several attributes such as icon_left, hint_text, username, and helper_text_mode. The username attribute is set to True, indicating that the text field is intended for username input. The helper_text_mode attribute is set to "on_error," which displays an error message if the input provided is invalid. Additionally, the use of helper_text_mode highlights algorithm design by providing a specific feedback mechanism for users in the event of an error.
+                   
+                   
 ### Float Layout and MDRectangleFlatIconButton
 
 ```py
@@ -369,7 +435,9 @@ FloatLayout:
       size_hint: .15, .05
       pos_hint: {"center_x":.433,"center_y":.78}                          
 ```                 
-                          
+
+A FloatLayout provides a flexible container for placing and organizing widgets. In this case, I wanted to make the display more visually pleasing and interesting, so, I used the FloatLayout inorder to positioning my button inside each shelf of the fridge - as if they're taking out an object from it. Through pattern recognition, the icon attribute of the MDRectangleFlatIconButton helps in enhancing the distinction between each button since there are multiple. I did this by copying the code and pasting but changing the icon, position, color, and size in order to make it easier for the client to easily distinguish the difference between each option buttons.               
+                   
 ### MDCheckbox
 
 ```py                          
@@ -379,13 +447,19 @@ MDCheckbox:
       size_hint: None, None
       size: dp(48), dp(48)
       active: True
-      on_active: root.checkbox_click_type(self, self.active, "meat")
+      on_active: root.checkbox_click_1(self, self.active, "meat")
       pos_hint: {"center_y":.5}
   MDLabel:
       text: 'meat'
       pos_hint: {"center_y":.5}
       font_size:20                          
-```                          
+```   
+                   
+The MDCheckbox is a custom Checkbox that implements Material Design guidelines. The code assigns an ID of "meat" to the MDCheckbox and specifies its size and position. By setting the "group" attribute to "group2," this code ensures that only one checkbox in the group can be selected at a time. This implementation was through my use pattern recognition as I could copy this code structure and paste it to create more checkboxes whilst ensuring that only 1 could be selected.
+
+### MDBoxLayout
+                   
+                   
                           
 [^1]: Python Software Foundation. (2021). Python Usage. https://www.python.org/about/success/
 [^2]: Rose, J. (2020). Why Python is so popular with developers: 3 reasons the language has exploded. TechRepublic. https://www.techrepublic.com/article/why-python-is-so-popular-with-developers-3-reasons-the-language-has-exploded/
