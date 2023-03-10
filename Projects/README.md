@@ -483,9 +483,55 @@ The MDCheckbox is a custom Checkbox that implements Material Design guidelines. 
 
 # Criteria D: Functionality                   
                    
-The video:
+## The drie to the video: 
+https://drive.google.com/drive/folders/1xOA9RqrMSwoENBNRwswJqcusiC_0Eg7_?usp=sharing
                    
-                   
+## The screens
+
+<img width="796" alt="Screen Shot 2566-03-10 at 23 05 16" src="https://user-images.githubusercontent.com/111941936/224336254-92cd8dba-54bf-462d-a931-bde6d26a627e.png">
+
+<sub> Fig.11 shows the StartScreen
+
+<img width="796" alt="Screen Shot 2566-03-10 at 23 05 36" src="https://user-images.githubusercontent.com/111941936/224336312-79f0a6cb-a9f2-42e0-847e-0fff5e4295c5.png">
+
+<sub> Fig.12 shows the RegistrationScreen
+
+<img width="796" alt="Screen Shot 2566-03-10 at 23 05 49" src="https://user-images.githubusercontent.com/111941936/224336359-4aa8999f-1ff9-499d-9e6e-8552ec0722b4.png">
+
+<sub> Fig.13 shows the LoginScreen
+
+<img width="796" alt="Screen Shot 2566-03-10 at 23 06 04" src="https://user-images.githubusercontent.com/111941936/224336420-ed8b3a86-8352-45c3-b2fd-93d2d123dccf.png">
+
+<sub> Fig.14 shows the HomeScreen
+
+<img width="796" alt="Screen Shot 2566-03-10 at 23 06 40" src="https://user-images.githubusercontent.com/111941936/224336562-e545d218-3518-46ce-b492-a6ecb4a5ac2f.png">
+
+<sub> Fig.15 shows the AddItemScreen
+
+<img width="796" alt="Screen Shot 2566-03-10 at 23 06 53" src="https://user-images.githubusercontent.com/111941936/224336635-5b4a5688-e6aa-4fec-ba71-d07af9a68362.png">
+
+<sub> Fig.16 shows the ListScreen
+
+<img width="796" alt="Screen Shot 2566-03-10 at 23 08 06" src="https://user-images.githubusercontent.com/111941936/224336930-c3c178f1-d39c-481b-8f3c-01e4b286520b.png">
+
+<sub> Fig.17 shows the emptyScreen
+
+<img width="796" alt="Screen Shot 2566-03-10 at 23 09 18" src="https://user-images.githubusercontent.com/111941936/224337250-2a65737b-d0dc-4f80-b991-6427a8b52f4e.png">
+
+<sub> Fig.18 shows the quarterScreen
+
+<img width="796" alt="Screen Shot 2566-03-10 at 23 09 47" src="https://user-images.githubusercontent.com/111941936/224337354-af6c608b-f8aa-41a4-9ce7-6ed1fd843f14.png">
+
+<sub> Fig.19 shows the halfScreen
+
+<img width="796" alt="Screen Shot 2566-03-10 at 23 11 10" src="https://user-images.githubusercontent.com/111941936/224337657-caa4cc22-cdd2-4247-91da-64183ba8ba80.png">
+
+<sub> Fig.20 shows the sevfiveScreen
+
+<img width="796" alt="Screen Shot 2566-03-10 at 23 12 59" src="https://user-images.githubusercontent.com/111941936/224338026-ba38acd0-28c8-41bb-a918-794980b40c24.png">
+
+<sub> Fig.21 shows the fullScreen
+
 [^1]: Python Software Foundation. (2021). Python Usage. https://www.python.org/about/success/
 [^2]: Rose, J. (2020). Why Python is so popular with developers: 3 reasons the language has exploded. TechRepublic. https://www.techrepublic.com/article/why-python-is-so-popular-with-developers-3-reasons-the-language-has-exploded/
 [^3]: KivyMD. (n.d.). KivyMD: Introduction. https://kivymd.readthedocs.io/en/latest/introduction/
