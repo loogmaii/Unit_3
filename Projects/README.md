@@ -174,7 +174,22 @@ This UML diagram for the OOP classes illustrates the classes and methods utilize
 4. algorithm design
   
 ## Python file: "project3.py"
-
+  
+  
+### Setting up the file
+  
+```py
+import sqlite3
+from secure_password import encrypt_password
+from kivymd.uix.pickers import MDDatePicker
+from database_library import database_worker
+from kivymd.app import MDApp
+from kivymd.uix.screen import MDScreen
+from kivymd.uix.datatables import MDDataTable
+from kivymd.uix.dialog import MDDialog  
+```
+The code imports several libraries that will be used to build the Refrigerator Manager application. The sqlite3 library is used to connect to and manipulate an SQLite database, which will be used to store the data about the food items stored in the fridge. The secure_password library is used to encrypt the user's password before storing it in the database, ensuring that it is secure. The kivymd library is used to build the graphical user interface (GUI) of the application, which will be user-friendly and easy to navigate.
+  
 ### Database worker
  
 The class called database_worker that initializes a connection to a SQLite database with the given name.  It abstract away the details of connecting to a database, allowing the developer to interact with the database through a simplified interface. This will allow me to focus on the more complex and important aspects of the application, such as the user interface and functionality.
