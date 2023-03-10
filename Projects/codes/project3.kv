@@ -1,4 +1,4 @@
-creenManager:
+ScreenManager:
     StartScreen:
         name: "StartScreen"
 
@@ -285,7 +285,7 @@ creenManager:
                 size_hint: None, None
                 size: dp(48), dp(48)
                 active: True
-                on_active: root.checkbox_click_type(self, self.active, "meat")
+                on_active: root.checkbox_click_1(self, self.active, "meat")
                 pos_hint: {"center_y":.5}
             MDLabel:
                 text: 'meat'
@@ -297,7 +297,7 @@ creenManager:
                 group: 'group2'
                 size_hint: None, None
                 size: dp(48), dp(48)
-                on_active: root.checkbox_click_type(self, self.active, "fruits & vegetables")
+                on_active: root.checkbox_click_1(self, self.active, "fruits & vegetables")
                 pos_hint: {"center_y":.5}
             MDLabel:
                 text: 'fruits & vegetables'
@@ -309,7 +309,7 @@ creenManager:
                 group: 'group2'
                 size_hint: None, None
                 size: dp(48), dp(48)
-                on_active: root.checkbox_click_type(self, self.active, "beverage")
+                on_active: root.checkbox_click_1(self, self.active, "beverage")
                 pos_hint: {"center_y":.5}
             MDLabel:
                 text: 'beverage'
@@ -321,7 +321,7 @@ creenManager:
                 group: 'group2'
                 size_hint: None, None
                 size: dp(48), dp(48)
-                on_active: root.checkbox_click_type(self, self.active, "others")
+                on_active: root.checkbox_click_1(self, self.active, "others")
                 pos_hint: {"center_y":.5}
             MDLabel:
                 text: 'others'
@@ -353,7 +353,7 @@ creenManager:
                 size_hint: None, None
                 size: dp(48), dp(48)
                 active: True
-                on_active: root.checkbox_click_loc(self, self.active, "upper")
+                on_active: root.checkbox_click_2(self, self.active, "upper")
                 pos_hint: {"center_y":.5}
             MDLabel:
                 text: 'upper'
@@ -365,7 +365,7 @@ creenManager:
                 group: 'group1'
                 size_hint: None, None
                 size: dp(48), dp(48)
-                on_active: root.checkbox_click_loc(self, self.active, "middle")
+                on_active: root.checkbox_click_2(self, self.active, "middle")
                 pos_hint: {"center_y":.5}
             MDLabel:
                 text: 'middle'
@@ -377,7 +377,7 @@ creenManager:
                 group: 'group1'
                 size_hint: None, None
                 size: dp(48), dp(48)
-                on_active: root.checkbox_click_loc(self, self.active, "lower")
+                on_active: root.checkbox_click_2(self, self.active, "lower")
                 pos_hint: {"center_y":.5}
             MDLabel:
                 text: 'lower'
@@ -389,7 +389,7 @@ creenManager:
                 group: 'group1'
                 size_hint: None, None
                 size: dp(48), dp(48)
-                on_active: root.checkbox_click_loc(self, self.active, "drawers")
+                on_active: root.checkbox_click_2(self, self.active, "drawers")
                 pos_hint: {"center_y":.5}
             MDLabel:
                 text: 'drawers'
@@ -401,7 +401,7 @@ creenManager:
                 group: 'group1'
                 size_hint: None, None
                 size: dp(48), dp(48)
-                on_active: root.checkbox_click_loc(self, self.active, "door")
+                on_active: root.checkbox_click_2(self, self.active, "door")
                 pos_hint: {"center_y":.5}
             MDLabel:
                 text: 'door'
@@ -534,7 +534,6 @@ creenManager:
             source: "25%.png"
 
     FloatLayout:
-        FloatLayout:
         MDRaisedButton:
             size_hint: .2,.005
             pos_hint: {"center_x":.5, "center_y":.92}
